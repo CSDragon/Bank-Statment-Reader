@@ -113,6 +113,7 @@ public class Reader
                         
                     case 1:
                         System.out.println(line);
+                        new Account(line);
                         done = true;
                     default:
                         break;

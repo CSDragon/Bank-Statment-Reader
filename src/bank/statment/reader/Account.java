@@ -9,6 +9,23 @@ package bank.statment.reader;
  *
  * @author chrsc
  */
-public class Account {
+public class Account 
+{
     
+    private String name;
+    private long accID;
+    private double startingBal;
+    private double endingBal;
+    
+    /**
+     * 
+     * @param initialString 
+     */
+    public Account(String initialString)
+    {
+        String endBalString = initialString.substring(initialString.lastIndexOf(" ")+1);
+        endingBal = Double.parseDouble(endBalString);
+        System.out.println(endingBal);
+
+    }
 }
