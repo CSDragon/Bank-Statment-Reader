@@ -34,13 +34,15 @@ public class BankStatmentReader
     {
         String s = Reader.readPDF("resources/Aug2017Old.pdf");
         
+        //System.out.println(s);
+        
         String[] lines = Reader.separateMultiLineString(s);
         
         BufferedReader br = Reader.stringToBufferedReader(s);
         
         boolean done = false;
         
-        Reader.readStatementLines(br);
+        Statement st = new Statement(br);
         
         /*try
         {

@@ -8,6 +8,9 @@ package bank.statment.reader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.StringReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
@@ -79,51 +82,20 @@ public class Reader
     }
     
     /**
-     * Reads a statement and creates statement objects. 
-     * @param statement The statement as a buffered reader.
+     * Returns an array list of all indexs of a specific character in a string.
+     * @param input The input string.
+     * @param c The character we are looking for
+     * @return The ArrayList of locations.
      */
-    public static void readStatementLines(BufferedReader statement)
+    public static ArrayList<Integer> indexesOfCharacterInString(String input, char c)
     {
-        try
-        {
-            //initialize state machine variables
-            int state = 0;
-            String line = "";
-            boolean done = false;
-            boolean hold = false;
-
-            while(!done)
-            {
-                //If we want to hold the same line for another instruction we set hold to true.
-                //If not hold, get a new line.
-                if(!hold)
-                    line = statement.readLine();
-                else
-                    hold = false;
-
-                //State machine
-                switch (state)
-                {
-                    //First case of state machine.
-                    //Reach 
-                    case 0:
-                        if(line.equals("Account Page Account number last statement this statement"))
-                            state = 1;
-                        break;
-                        
-                    case 1:
-                        System.out.println(line);
-                        new Account(line);
-                        done = true;
-                    default:
-                        break;
-                }
-            }
-        }
-        catch(Exception e)
-        {
-            
-        }
+        ArrayList<Integer> ret = new ArrayList<>();
+        
+        for(int i = 0; i<input.length(); i++)
+            if(input.charAt(i) == c)
+                ret.add(i);
+        
+        return ret;
     }
     
 }
