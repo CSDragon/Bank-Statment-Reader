@@ -32,7 +32,7 @@ public class BankStatmentReader
     
     public static void test()
     {
-        String s = Reader.readPDF("resources/Aug2017Old.pdf");
+        String s = Reader.readPDF("resources/sampleChecking.pdf");
         
         //System.out.println(s);
         
